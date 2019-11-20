@@ -3,6 +3,7 @@ plugins {
 	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
 	id 'java'
 	id 'war'
+	id "org.sonarqube" version "2.8"
 }
 
 group = 'ch.nyp'
@@ -21,6 +22,12 @@ dependencies {
 	}
 	testImplementation"org.assertj:assertj-core:3.13.2"
 }
+// SonarQube
+	sonarqube {
+		properties {
+			property "sonar.projectKey", "Larry-B4_devops"
+		}
+	}
 
 test {
 	useJUnitPlatform()
