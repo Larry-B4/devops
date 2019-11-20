@@ -4,7 +4,7 @@ jobs:
     - stage: CodeQuality
       script: ./gradlew sonarqube
 
-
+// hallo
 addons:
   sonarcloud:
     organization: $SONAR_USER
