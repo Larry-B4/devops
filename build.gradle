@@ -1,12 +1,12 @@
 plugins {
-	id 'org.springframework.boot' version '2.2.1.RELEASE'
-	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
-	id 'java'
-	id 'war'
-	id "org.sonarqube" version "2.8"
+    id 'org.springframework.boot' version '2.2.1.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+    id 'java'
+    id 'war'
+    id "org.sonarqube" version "2.8"
 
-	//Docker
-	id "com.palantir.docker" version "0.22.1"
+    //Docker
+    id "com.palantir.docker" version "0.22.1"
 }
 
 group = 'ch.nyp'
@@ -14,35 +14,35 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
-	testImplementation('org.springframework.boot:spring-boot-starter-test') {
-		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
-	}
-	testImplementation"org.assertj:assertj-core:3.13.2"
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+    testImplementation "org.assertj:assertj-core:3.13.2"
 }
 // SonarQube
-	sonarqube {
-		properties {
-			property "sonar.projectKey", "Larry-B4_devops"
-		}
-	}
+sonarqube {
+    properties {
+        property "sonar.projectKey", "Larry-B4_devops"
+    }
+}
 
 test {
-	useJUnitPlatform()
+    useJUnitPlatform()
 }
 
 docker {
-	name 'larryb4/devops'
-	tags 'latest' // deprecated, use 'tag'
-	dockerfile file('Dockerfile')
-	files war.archiveFile
-	pull true
-	noCache true
+    name "larryb4/devops"
+    tags "latest"
+    dockerfile file('Dockerfile')
+    files war.archiveFile
+    pull true
+    noCache true
 }
 
 docker.dependsOn bootWar
